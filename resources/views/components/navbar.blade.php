@@ -4,7 +4,7 @@ $items = [
     ['name' => 'Categories', 'route' => 'categories.index'],
     ['name' => 'Products', 'route' => 'products.index'],
     ['name' => 'Sales', 'route' => 'sales.index'],
-    
+    ['name' => 'Users', 'route' => 'users.index']
 ]
 
 ?>
