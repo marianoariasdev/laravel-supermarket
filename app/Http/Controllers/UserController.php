@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Http\Requests\StoreUserRequest;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -16,12 +18,16 @@ class UserController extends Controller
 
     public function create()
     {
-        return view('users.create');
+        $permissions = Permission::get();
+        $roles = Role::get();
+        return view('users.create', compact('permissions', 'roles'));
     }
 
     public function store(StoreUserRequest $request)
     {
-        User::create($request->all());
+        $user = User::create($request->all());
+        $user->assignRole($request->role);
+        $user->syncPermissions($request->permissions);
         return redirect()->route('users.index');
     }
 
