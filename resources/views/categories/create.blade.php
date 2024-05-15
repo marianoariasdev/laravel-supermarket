@@ -23,6 +23,10 @@
                                 placeholder="Category Name" required>
 
                         </div>
+
+                        @error('name')
+                            <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+                        @enderror
                     </div>
 
                     <div class="flex justify-end gap-x-2">
