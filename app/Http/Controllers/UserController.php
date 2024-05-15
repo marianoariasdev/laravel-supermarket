@@ -33,12 +33,16 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
-        return view('users.edit', compact('user'));
+        $permissions = Permission::get();
+        $roles = Role::get();
+        return view('users.edit', compact('user', 'permissions', 'roles'));
     }
 
     public function update(StoreUserRequest $request, User $user)
     {
         $user->update($request->all());
+        $user->syncRoles($request->role);
+        $user->syncPermissions($request->permissions);
         return redirect()->route('users.index');
     }
 
