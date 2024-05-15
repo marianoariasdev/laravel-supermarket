@@ -20,7 +20,7 @@
                         <div class="mt-2 space-y-3">
                             <input id="af-payment-billing-contact" type="text" name="name"
                                 class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-gray-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
-                                placeholder="Category Name" value={{ $category->name }} required>
+                                placeholder="Category Name" value="{{ old('name') ?? $category->name }}" required>
 
                         </div>
 

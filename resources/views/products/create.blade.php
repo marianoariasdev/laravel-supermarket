@@ -17,11 +17,15 @@
                         </label>
 
                         <div class="mt-2 space-y-3">
-                            <input id="af-payment-billing-contact" type="text" name="name"
+                            <input id="af-payment-billing-contact" type="text" name="name" value="{{ old('name') }}"
                                 class="py-2 px-3 pe-11 block w-full border-gray-200 text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-gray-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
                                 placeholder="Product Name" required>
 
                         </div>
+
+                        @error('name')
+                        <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+                        @enderror
                     </div>
 
                     <div
@@ -32,11 +36,15 @@
                         </label>
 
                         <div class="mt-2 space-y-3">
-                            <input id="af-payment-billing-contact" type="number" name="price"
+                            <input id="af-payment-billing-contact" type="number" name="price" value="{{ old('price') }}"
                                 class="py-2 px-3 pe-11 block w-full border-gray-200 text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-gray-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
                                 placeholder="Product Price" step=".01" required>
 
                         </div>
+
+                        @error('price')
+                        <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+                        @enderror
                     </div>
 
                     <div
@@ -51,11 +59,33 @@
                                 class="py-2 px-3 pe-9 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-gray-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
                                 <option value="" class="text-gray-200" disabled>Select Category</option>
                                 @foreach ($categories as $category )
-                                <option value={{ $category->id }}>{{ $category->name }}</option>
+                                <option value={{ $category->id }} @selected(old('category_id' == $category->id))>{{ $category->name }}</option>
                                 @endforeach
                             </select>
+                        </div>
+
+                        @error('category_id')
+                        <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <div
+                        class="py-6 first:pt-0 last:pb-0  first:border-transparent border-gray-200 dark:border-neutral-700 dark:first:border-transparent">
+                        <label for="af-payment-billing-contact"
+                            class="inline-block text-sm font-medium dark:text-white">
+                            Product Stock
+                        </label>
+
+                        <div class="mt-2 space-y-3">
+                            <input id="af-payment-billing-contact" type="number" name="stock" value="{{ old('stock') }}"
+                                class="py-2 px-3 pe-11 block w-full border-gray-200 text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-gray-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+                                placeholder="Product Stock"  required>
 
                         </div>
+
+                        @error('stock')
+                        <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+                        @enderror
                     </div>
 
                     <div class="flex justify-end gap-x-2">
