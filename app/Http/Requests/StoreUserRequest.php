@@ -11,21 +11,28 @@ class StoreUserRequest extends FormRequest
         return true;
     }
 
-    public function prepareForValidation()
+    protected function prepareForValidation()
     {
-        $this->merge([
-            'password' => bcrypt($this->password),
-        ]);
+        if ($this->isMethod('post')) {
+            $this->merge([
+                'password' => bcrypt($this->password),
+            ]);
+        }
     }
 
     public function rules(): array
     {
-        return [
+        $rules = [
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255' . ($this->method() == 'POST' ? '|unique:users' : ''),
-            'password' => 'required|string|min:8|',
+            'email' => 'required|string|email|max:255' . ($this->isMethod('post') ? '|unique:users,email' : ''),
             'role' => 'required|string|exists:roles,name',
             'permissions' => 'array',
         ];
+
+        if ($this->isMethod('post')) {
+            $rules['password'] = 'required|string|min:8';
+        }
+
+        return $rules;
     }
 }
