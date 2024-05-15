@@ -25,7 +25,7 @@ class UserController extends Controller
 
     public function store(StoreUserRequest $request)
     {
-        $user = User::create($request->all());
+        $user = User::create($request->validated());
         $user->assignRole($request->role);
         $user->syncPermissions($request->permissions);
         return redirect()->route('users.index');
@@ -40,7 +40,7 @@ class UserController extends Controller
 
     public function update(StoreUserRequest $request, User $user)
     {
-        $user->update($request->all());
+        $user->update($request->validated());
         $user->syncRoles($request->role);
         $user->syncPermissions($request->permissions);
         return redirect()->route('users.index');
