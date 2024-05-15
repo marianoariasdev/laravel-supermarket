@@ -19,7 +19,15 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 
-    Route::resource('categories', CategoryController::class)->except('show');
+    // Route::resource('categories', CategoryController::class)->except('show');
+    // Categories routes
+    Route::get('categories', [CategoryController::class, 'index'])->name('categories.index')->middleware('can:categories.index');
+    Route::get('categories/create', [CategoryController::class, 'create'])->name('categories.create')->middleware('can:categories.create');
+    Route::post('categories', [CategoryController::class, 'store'])->name('categories.store')->middleware('can:categories.create');
+    Route::get('categories/{category}', [CategoryController::class, 'edit'])->name('categories.edit')->middleware('can:categories.edit');
+    Route::put('categories/{category}', [CategoryController::class, 'update'])->name('categories.update')->middleware('can:categories.edit');
+    Route::delete('categories/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy')->middleware('can:categories.delete');
+
     Route::resource('products', ProductController::class)->except('show');
     Route::resource('sales', SaleController::class);
 

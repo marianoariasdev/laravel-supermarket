@@ -5,7 +5,7 @@
         <div class="bg-white rounded-xl shadow p-4 sm:p-7 dark:bg-gray-900">
             <div class=" mb-8">
                 <h2 class="text-2xl md:text-3xl font-bold text-gray-800 dark:text-neutral-200">
-                    New Category
+                    Edit Category
                 </h2>
 
                 <form action={{ route('categories.update', $category->id) }} method="POST">
