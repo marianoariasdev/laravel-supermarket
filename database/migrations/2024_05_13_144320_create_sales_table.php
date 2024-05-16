@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('sales', function (Blueprint $table) {
             $table->id();
             $table->double('price');
+            $table->foreignId('created_by')->references('id')->on('users');
             $table->timestamps();
         });
     }

@@ -72,5 +72,9 @@
                 </div>
             </div>
         </div>
+
+        <div class="mt-6">
+            <p class="text-sm">Created by <span class="font-semibold">{{ $sale->user->name }}</span></p>
+        </div>
     </header>
 </x-app-layout>

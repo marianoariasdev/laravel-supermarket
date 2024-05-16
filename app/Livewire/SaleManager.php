@@ -44,7 +44,7 @@ class SaleManager extends Component
 
     public function saveSale()
     {
-        Sale::create(['price' => $this->totalPrice]);
+        Sale::create(['price' => $this->totalPrice, 'created_by' => auth()->user()->id]);
 
         foreach ($this->salesProducts as $product) {
             Bill::create([

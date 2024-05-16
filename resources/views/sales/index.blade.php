@@ -27,6 +27,9 @@
                                 <th scope="col"
                                     class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">
                                     Date</th>
+                                    <th scope="col"
+                                    class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">
+                                    Created By</th>
                                 <th scope="col"
                                     class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">
                                     Action</th>
@@ -45,11 +48,15 @@
                                 </td>
                                 <td
                                     class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">
-                                    {{ $sale->bills->count() }}
+                                    {{ $sale->bills->sum('quantity') }}
                                 </td>
                                 <td
                                     class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">
                                     {{ $sale->created_at->format('d/m/Y') }}
+                                </td>
+                                <td
+                                    class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">
+                                    {{ $sale->user->name }}
                                 </td>
                                 <td class="flex gap-2 px-6 py-4 whitespace-nowrap text-sm font-medium">
                                     <a href={{ route('sales.show', $sale->id) }}

@@ -9,10 +9,15 @@ class Sale extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['price'];
+    protected $fillable = ['price', 'created_by'];
 
     public function bills()
     {
         return $this->hasMany(Bill::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'created_by');
     }
 }
