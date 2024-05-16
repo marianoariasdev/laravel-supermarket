@@ -1,4 +1,4 @@
-<div class="grid grid-cols-2 gap-8">
+<div class="grid grid-col-1 md:grid-cols-2 gap-8">
     <div class="    text-black dark:text-white">
         <!-- Card -->
         <div class=" bg-white rounded-xl shadow p-4 sm:p-7 dark:bg-gray-900">
