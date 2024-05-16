@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SaleController;
+use App\Http\Controllers\SupplierController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -28,8 +29,8 @@ Route::middleware([
     Route::put('categories/{category}', [CategoryController::class, 'update'])->name('categories.update')->middleware('can:categories.edit');
     Route::delete('categories/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy')->middleware('can:categories.delete');
 
-    Route::resource('products', ProductController::class)->except('show');
-    Route::resource('sales', SaleController::class);
+    Route::resource('products', ProductController::class)->except('show'); // TODO: Add middleware to protect the routes
+    Route::resource('sales', SaleController::class); // TODO: Add middleware to protect the routes
 
     // Users routes
     Route::get('users', [UserController::class, 'index'])->name('users.index')->middleware('can:users.index');
@@ -38,4 +39,12 @@ Route::middleware([
     Route::get('users/{user}', [UserController::class, 'edit'])->name('users.edit')->middleware('can:users.edit');
     Route::put('users/{user}', [UserController::class, 'update'])->name('users.update')->middleware('can:users.edit');
     Route::delete('users/{user}', [UserController::class, 'destroy'])->name('users.destroy')->middleware('can:users.delete');
+
+    // Suppliers routes
+    Route::get('suppliers', [SupplierController::class, 'index'])->name('suppliers.index')->middleware('can:suppliers.index');
+    Route::get('suppliers/create', [SupplierController::class, 'create'])->name('suppliers.create')->middleware('can:suppliers.create');
+    Route::post('suppliers', [SupplierController::class, 'store'])->name('suppliers.store')->middleware('can:suppliers.create');
+    Route::get('suppliers/{supplier}', [SupplierController::class, 'edit'])->name('suppliers.edit')->middleware('can:suppliers.edit');
+    Route::put('suppliers/{supplier}', [SupplierController::class, 'update'])->name('suppliers.update')->middleware('can:suppliers.edit');
+    Route::delete('suppliers/{supplier}', [SupplierController::class, 'destroy'])->name('suppliers.destroy')->middleware('can:suppliers.delete');
 });

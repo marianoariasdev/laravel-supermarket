@@ -1,6 +1,12 @@
 <?php
 
-$items = [['name' => 'Categories', 'route' => 'categories.index', 'permission' => 'categories.index'], ['name' => 'Products', 'route' => 'products.index', 'permission' => 'products.index'], ['name' => 'Sales', 'route' => 'sales.index', 'permission' => 'sales.index'], ['name' => 'Users', 'route' => 'users.index', 'permission' => 'users.index']];
+$items = [
+    ['name' => 'Categories', 'route' => 'categories.index', 'permission' => 'categories.index'], 
+    ['name' => 'Products', 'route' => 'products.index', 'permission' => 'products.index'], 
+    ['name' => 'Sales', 'route' => 'sales.index', 'permission' => 'sales.index'],
+    ['name' => 'Suppliers', 'route' => 'suppliers.index', 'permission' => 'suppliers.index'],
+    ['name' => 'Users', 'route' => 'users.index', 'permission' => 'users.index']
+];
 
 ?>
 
