@@ -76,6 +76,15 @@
                                 @endforeach
                             </tr>
                         </tbody>
+                        <tfoot class="mt-4">
+                            <tr>
+                                <td colspan="6">
+                                    <div class="px-6 py-3">
+                                        {{ $sales->links() }}
+                                    </div>
+                                </td>
+                            </tr>
+                        </tfoot>
                     </table>
                 </div>
             </div>
