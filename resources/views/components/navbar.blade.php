@@ -2,6 +2,7 @@
 
 $items = [
     ['name' => 'Categories', 'route' => 'categories.index', 'permission' => 'categories.index'], 
+    ['name' => 'Expenses', 'route' => 'expenses.index', 'permission' => 'expenses.index'], 
     ['name' => 'Products', 'route' => 'products.index', 'permission' => 'products.index'], 
     ['name' => 'Sales', 'route' => 'sales.index', 'permission' => 'sales.index'],
     ['name' => 'Suppliers', 'route' => 'suppliers.index', 'permission' => 'suppliers.index'],

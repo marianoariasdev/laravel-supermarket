@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
@@ -20,7 +21,6 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 
-    // Route::resource('categories', CategoryController::class)->except('show');
     // Categories routes
     Route::get('categories', [CategoryController::class, 'index'])->name('categories.index')->middleware('can:categories.index');
     Route::get('categories/create', [CategoryController::class, 'create'])->name('categories.create')->middleware('can:categories.create');
@@ -47,4 +47,12 @@ Route::middleware([
     Route::get('suppliers/{supplier}', [SupplierController::class, 'edit'])->name('suppliers.edit')->middleware('can:suppliers.edit');
     Route::put('suppliers/{supplier}', [SupplierController::class, 'update'])->name('suppliers.update')->middleware('can:suppliers.edit');
     Route::delete('suppliers/{supplier}', [SupplierController::class, 'destroy'])->name('suppliers.destroy')->middleware('can:suppliers.delete');
+
+    // Expenses routes
+    Route::get('expenses', [ExpenseController::class, 'index'])->name('expenses.index')->middleware('can:expenses.index');
+    Route::get('expenses/create', [ExpenseController::class, 'create'])->name('expenses.create')->middleware('can:expenses.create');
+    Route::post('expenses', [ExpenseController::class, 'store'])->name('expenses.store')->middleware('can:expenses.create');
+    Route::get('expenses/{expense}', [ExpenseController::class, 'edit'])->name('expenses.edit')->middleware('can:expenses.edit');
+    Route::put('expenses/{expense}', [ExpenseController::class, 'update'])->name('expenses.update')->middleware('can:expenses.edit');
+    Route::delete('expenses/{expense}', [ExpenseController::class, 'destroy'])->name('expenses.destroy')->middleware('can:expenses.delete');
 });
